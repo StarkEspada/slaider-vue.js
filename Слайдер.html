@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+<style>
+
+body{
+	margin: 0;
+}
+
+.slaider{
+    width: 1000px;
+    height: 800px;
+    border: 13px solid #6f0cf238;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 200px;
+    border-radius: 15px;
+}
+.slaide__image-box{
+	width: 5020px;
+	height: 790px;
+}
+.slider__managing{
+    width: 400px;
+    height: 75px;
+    margin-top: -40px;
+    margin-left: 350px;
+}
+.slider__picture-one, .slider__picture-two, .slider__picture-tree, .slider__picture-for, .slider__picture-five{
+	width: 15px;
+    height: 15px;
+    border: 4px solid #d50fc6;
+    display: inline-block;
+    border-radius: 50%;
+    margin-left: 25px;
+    cursor: pointer;
+    transition: 1s all;
+}
+.slaider__picture{
+	width: 1000px;
+	height: 800px;
+	display: inline-block;
+}
+.slaide__button_on{
+	width: 35px;
+    border-radius: 10px;
+    background: #d50fc6;
+}
+.slaide__button_off{
+	width: 15px;
+    border-radius: 10px;
+    background: #d50fc600;
+}
+
+
+</style>
+
+<div id="app__slaider" class="slaider">
+	<div class="slaide__image-box">
+		<img class="slaider__picture" src="img/img01.jpg">
+		<img class="slaider__picture" src="img/img02.jpg">
+		<img class="slaider__picture" src="img/img03.jpg">
+		<img class="slaider__picture" src="img/img04.jpg">
+		<img class="slaider__picture" src="img/img05.jpg">
+	</div>
+	<div class="slider__managing">
+		<div v-on:click="count = 0, nextImage()" 
+			 class="slider__picture-one"
+			 v-on:mousedown = "activeSlaidOne = true, activeSlaidTwo = false, activeSlaidTree = false, activeSlaidFor = false, activeSlaidFive = false"
+			 v-bind:class="[activeSlaidOne ? 'slaide__button_on' : 'slaide__button_off']"></div>
+		<div v-on:click="count = -1004, nextImage()" class="slider__picture-two"
+			 v-on:mousedown = "activeSlaidOne = false, activeSlaidTwo = true, activeSlaidTree = false, activeSlaidFor = false, activeSlaidFive = false"
+			 v-bind:class="[activeSlaidTwo ? 'slaide__button_on' : 'slaide__button_off']"></div>
+		<div v-on:click="count = -2008, nextImage()" class="slider__picture-tree"
+			 v-on:mousedown = "activeSlaidOne = false, activeSlaidTwo = false, activeSlaidTree = true, activeSlaidFor = false, activeSlaidFive = false"
+			 v-bind:class="[activeSlaidTree ? 'slaide__button_on' : 'slaide__button_off']"></div>
+		<div v-on:click="count = -3012, nextImage()" class="slider__picture-for"
+			 v-on:mousedown = "activeSlaidOne = false, activeSlaidTwo = false, activeSlaidTree = false, activeSlaidFor = true, activeSlaidFive = false"
+			 v-bind:class="[activeSlaidFor ? 'slaide__button_on' : 'slaide__button_off']"></div>
+		<div v-on:click="count = -4016, nextImage()" class="slider__picture-five"
+			 v-on:mousedown = "activeSlaidOne = false, activeSlaidTwo = false, activeSlaidTree = false, activeSlaidFor = false, activeSlaidFive = true"
+			 v-bind:class = "[activeSlaidFive ? 'slaide__button_on' : 'slaide__button_off']"></div>
+	</div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script><!--  -->
+<!-- <script src="vue.js"></script> -->
+<script>
+
+	var appSlaider = new Vue({
+		el: "#app__slaider",
+		data: {
+			count: 0,
+			activeSlaidOne: true,
+			activeSlaidTwo: false,
+			activeSlaidTree: false,
+			activeSlaidFor: false,
+			activeSlaidFive: false,
+		},
+		methods:{
+			nextImage: function(){
+				var slaideImageBox = document.querySelector(".slaide__image-box")
+				slaideImageBox.style.marginLeft = this.count + "px"
+				console.log(slaideImageBox)
+
+			},
+		}
+	})
+
+
+</script>
+
+</body>
+</html>
